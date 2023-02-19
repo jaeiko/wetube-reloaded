@@ -1,5 +1,8 @@
 import express from "express";
 import morgan from "morgan";
+import globalRouter from "./routers/globalRouter";
+import userRouter from "./routers/userRouter";
+import videoRouter from "./routers/videoRouter";
 
 const PORT = 4000;
 
@@ -7,20 +10,9 @@ const app = express(); // 변수명 상관없음, express application 생성(exp
 const logger = morgan("dev");
 app.use(logger);
 
-const handleHome = (req, res) => res.send("Home");
-const handleEditUser = (req, res) => res.send("Edit User");
-const handleWatchVideo = (req, res) => res.send("Watch Video");
-
-const globalRouter = express.Router();
-globalRouter.get("/", handleHome);
-const userRouter = express.Router();
-userRouter.get("/edit", handleEditUser);
-const videoRouter = express.Router();
-videoRouter.get("/watch", handleWatchVideo);
-
 app.use("/", globalRouter);
-app.use("/user", userRouter);
-app.use("/video", videoRouter);
+app.use("/users", userRouter);
+app.use("/videos", videoRouter);
 
 const handleListening = () => console.log(`Server listening on port ${4000}`);
 
