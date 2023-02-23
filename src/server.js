@@ -8,8 +8,10 @@ const PORT = 4000;
 
 const app = express(); // 변수명 상관없음, express application 생성(express 규칙)
 const logger = morgan("dev");
-app.use(logger);
 
+app.set("view engine", "pug");
+app.set("views", process.cwd() + "/src/views");
+app.use(logger);
 app.use("/", globalRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
