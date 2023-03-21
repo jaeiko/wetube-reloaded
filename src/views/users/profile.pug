@@ -1,0 +1,12 @@
+extends ../base
+include ../mixins/video
+
+block content
+  .profile__data
+    img.avatar(src=user.avatarUrl, crossorigin="use-credentials")
+    h3= user.name
+  .video-grid
+    each video in user.videos
+      +video(video)
+    else
+      span.empty__message No videos found

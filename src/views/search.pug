@@ -1,0 +1,15 @@
+extends base
+include mixins/video
+
+block content
+  form.search__form(method="GET")
+    input(placeholder="Search by title", name="keyword", type="text") 
+    input(type="submit", value="Search now")
+    button
+      i.fas.fa-search
+
+  .video-grid
+    each video in videos 
+      +video(video)
+    else
+      span.empty__message No videos found

@@ -1,4 +1,22 @@
 extends base.pug
 
-block content 
-    h1 Edit!
+block content
+  h4 Upload Video
+  form(method="POST")
+    input(name="title", placeholder="Video Title", value=video.title, required)
+    input(
+      name="description",
+      placeholder="description",
+      required,
+      type="text",
+      minLength=20,
+      value=video.description
+    )
+    input(
+      name="hashtags",
+      placeholder="hashtags, separated by comma.",
+      required,
+      type="text",
+      value=video.hashtags.join()
+    )
+    input(value="Save", type="submit")
