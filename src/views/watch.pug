@@ -36,9 +36,7 @@ block content
     a(href=`${video.id}/delete`) Delete Video &rarr;
 
   if loggedIn
-    .video__comments 
-      |
-      |
+    .video__add-comments 
       |
       form#commentForm.video__comment-form
         textarea#textarea(
@@ -56,7 +54,8 @@ block content
           i.fas.fa-comment 
             |
             span #{ comment.text }
-            span ❌
+            if String(comment.owner._id) === String(loggedInUser._id)
+              span#delete_comment ❌
 
 block scripts
   script(src="/static/js/videoPlayer.js") 
