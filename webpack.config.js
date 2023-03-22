@@ -11,7 +11,6 @@ module.exports = {
     commentSection: BASE_JS + "commentSection.js",
   },
   plugins: [new MiniCssExtractPlugin()],
-  mode: "development",
   plugins: [
     new MiniCssExtractPlugin({
       filename: "css/styles.css",
@@ -39,7 +38,6 @@ module.exports = {
       },
     ],
   },
-  watch: true,
   watchOptions: {
     ignored: /node_modules/,
     aggregateTimeout: 5000,
