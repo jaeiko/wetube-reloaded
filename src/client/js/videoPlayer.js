@@ -56,12 +56,16 @@ const handleVolumeChange = (event) => {
 const formatTime = (seconds) =>
   new Date(seconds * 1000).toISOString().substring(14, 19);
 
-const handleLoadedMetadata = () => {
+const handleLoadedMetadata = (loadedmetadata) => {
+  // video 전체 길이 불러오는 함수
+  // video 전체 길이는 duration 속성을 이용하여 가져올 수  있다.
+  // 이 때 video data에 대한 로딩이 끝나지 않은 상태에서 duration 값을 호출하면 Nan 값이 나오기 때문에 load가 끝난 시점에 duration 값을 호출하고 싶다면 video에 이벤트 리스너 'loadedmetadata'를 등록하여야 한다.
   totalTime.innerText = formatTime(Math.floor(video.duration));
   timeline.max = Math.floor(video.duration);
 };
 
 const handleTimeUpdate = () => {
+  // video 현재 시간 불러오는 함수
   currentTime.innerText = formatTime(Math.floor(video.currentTime));
   timeline.value = Math.floor(video.currentTime);
 };
