@@ -104,9 +104,9 @@ const handleMouseleave = () => {
 };
 
 const handleSpace = (event) => {
+  event.preventDefault();
   if (event.target.id !== textarea && event.code === "Space") {
     handlePlayClick();
-    event.preventDefault();
   }
 };
 
