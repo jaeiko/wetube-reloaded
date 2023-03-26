@@ -172,10 +172,11 @@ export const postEdit = async (req, res) => {
     }
   }
 
+  const isHeroku = process.env.NODE_ENV === "production";
   const updatedUser = await User.findByIdAndUpdate(
     _id,
     {
-      avatarUrl: file ? file.location : avatarUrl,
+      avatarUrl: file ? (isHeroku ? file.location : file.path) : avatarUrl, // file이 있으면 user가 avatar를 바꾸길 원한다 => server가 heroku에 있는지 확인 => 있다면 file.location 참고 / 없다면 file.path 참고 / file 자체가 없다면 avatarUrl 참고
       name,
       email,
       username,
