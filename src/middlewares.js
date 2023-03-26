@@ -14,6 +14,7 @@ const multerUploader = multerS3({
   s3: s3,
   bucket: "wetube-juni",
   acl: "public-read",
+  contentType: multerS3.AUTO_CONTENT_TYPE, // 배포 후 ios에서 동영상을 재생하고 싶을 때
 });
 
 export const localsMiddleware = (req, res, next) => {
