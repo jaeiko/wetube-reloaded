@@ -4,8 +4,8 @@ import User from "../models/User";
 
 export const home = async (req, res) => {
   const videos = await Video.find({})
-    .sort({ createdAt: "desc" })
-    .populate("owner");
+    .sort({ createdAt: "desc" }) // 오름차순 : asc | 내림차순 : desc
+    .populate("owner"); // User을 따로 부르지 않고도 Video Model에 ref:"User" 해준 것을 토대로 mongoose가 owner 부분을 실제 User data 객체로 채워준다.
   return res.render("home", { pageTitle: "Home", videos });
 };
 export const watch = async (req, res) => {
