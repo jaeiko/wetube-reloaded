@@ -1,3 +1,5 @@
+# This repository is a video upload site made using Html, CSS, NodeJS, and Pug! (For study)
+
 # Wetube Reloaded
 
 /login -> Login
