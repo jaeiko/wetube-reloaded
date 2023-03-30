@@ -27,7 +27,7 @@ export const getEdit = async (req, res) => {
     return res.status(404).render("404", { pageTitle: "Video not found." });
   }
   if (String(video.owner) !== String(_id)) {
-    req.flash("error", "You are not the owner of the video.");
+    req.flash("error", "You are not the owner of the video."); // Express 애플리케이션용 flash message(redirect 할때 메시지를 보낼수 있게 함, 굳이 redirect 아니더라도 아무대서나 쓸 수 있다!)
     return res.status(403).redirect("/");
   }
   res.render("edit", { pageTitle: `${video.title}`, video });

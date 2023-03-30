@@ -15,6 +15,8 @@ const videoSchema = new mongoose.Schema({
 });
 
 videoSchema.static("formathashtags", function (hashtags) {
+  // static을 사용하면 import 없이도 Model.function()형태로 사용이 가능
+  // 즉 static은 스키마에서 컴파일된 모델에 정적 "class" 메서드를 추가한다.
   return hashtags
     .split(",")
     .map((word) =>

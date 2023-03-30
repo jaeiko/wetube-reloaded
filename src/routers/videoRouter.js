@@ -25,6 +25,6 @@ videoRouter
   .route("/upload")
   .all(protectorMiddleware)
   .get(getUpload)
-  .post(videoUpload.fields([{ name: "video" }, { name: "thumb" }]), postUpload);
+  .post(videoUpload.fields([{ name: "video" }, { name: "thumb" }]), postUpload); // multer에서 2개 이상의 파일을 받아야 할 때 single 말고 array나 fields를 사용하면 된다!
 
 export default videoRouter;

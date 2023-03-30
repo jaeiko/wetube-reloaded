@@ -20,6 +20,7 @@ const s3ImageUploader = multerS3({
 const isHeroku = process.env.NODE_ENV === "production"; // process.env.NODE_ENV가 production이면 heroku에 있다는 뜻!
 
 const s3VideoUploader = multerS3({
+  // Streaming multer storage engine for AWS S3
   s3: s3,
   bucket: "wetube-juni/videos",
   acl: "public-read",
@@ -53,7 +54,7 @@ export const publicOnlyMiddleware = (req, res, next) => {
 };
 
 export const avatarUpload = multer({
-  dest: "uploads/avatars/",
+  dest: "uploads/avatars/", // 아바타 사진 저장할 파일 위치
   limits: {
     fileSize: 3000000,
   },
@@ -61,7 +62,7 @@ export const avatarUpload = multer({
 });
 
 export const videoUpload = multer({
-  dest: "uploads/videos/",
+  dest: "uploads/videos/", // 비디오 저장할 파일 위치
   limits: {
     fileSize: 10000000,
   },
